@@ -26,6 +26,12 @@ class ViewController: UIViewController {
         let audioInput = try! AVCaptureDeviceInput(device: audioDevice!)
         captureSession.addInput(audioInput)
         captureSession.addOutput(fileOutput)
+        
+        // Preview画面
+        let videoLayer = AVCaptureVideoPreviewLayer.init(session: captureSession)
+        videoLayer.frame = self.view.bounds
+        videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        self.view.layer.addSublayer(videoLayer)
     }
 
     override func didReceiveMemoryWarning() {
