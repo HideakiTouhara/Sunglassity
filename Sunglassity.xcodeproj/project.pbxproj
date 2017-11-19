@@ -22,6 +22,8 @@
 		07F6FDAD1FC1B5C700C39CDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07F6FDB01FC1B5C700C39CDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07F6FDB21FC1B5C700C39CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07F6FDB91FC1B92200C39CDB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		07F6FDBA1FC1B92F00C39CDB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 			children = (
 				07F6FDA51FC1B5C700C39CDB /* Sunglassity */,
 				07F6FDA41FC1B5C700C39CDB /* Products */,
+				07F6FDB81FC1B92100C39CDB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +65,15 @@
 				07F6FDB21FC1B5C700C39CDB /* Info.plist */,
 			);
 			path = Sunglassity;
+			sourceTree = "<group>";
+		};
+		07F6FDB81FC1B92100C39CDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07F6FDBA1FC1B92F00C39CDB /* AssetsLibrary.framework */,
+				07F6FDB91FC1B92200C39CDB /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
