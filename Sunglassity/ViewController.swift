@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import AVFoundation
+import AssetsLibrary
 
 class ViewController: UIViewController {
+    
+    let captureSession = AVCaptureSession()
+    let videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
+    let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio)
+    let fileOutput = AVCaptureMovieFileOutput()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Session, Deviceの準備
+        let videoInput = try! AVCaptureDeviceInput(device: videoDevice!)
+        captureSession.addInput(videoInput)
+        let audioInput = try! AVCaptureDeviceInput(device: audioDevice!)
+        captureSession.addInput(audioInput)
+        captureSession.addOutput(fileOutput)
     }
 
     override func didReceiveMemoryWarning() {
