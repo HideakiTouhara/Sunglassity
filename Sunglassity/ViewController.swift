@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import AssetsLibrary
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     let captureSession = AVCaptureSession()
     let videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
@@ -38,6 +38,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func tappedRecordButton(_ sender: UIButton) {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentDirectory = paths[0]
+        let filePath = "\(documentDirectory)/temp.mp4"
+        let fileURL = URL(fileURLWithPath: filePath)
+        fileOutput.startRecording(to: fileURL, recordingDelegate: self)
+    }
+    
 
 
 }
