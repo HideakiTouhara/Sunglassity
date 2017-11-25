@@ -35,17 +35,23 @@
                                     <action selector="tappedRecordButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n0N-la-6fx"/>
                                 </connections>
                             </button>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VvN-Na-Y1X">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </arscnView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="recordButton" destination="BWt-BP-PSr" id="P8T-eY-Quu"/>
+                        <outlet property="sceneView" destination="VvN-Na-Y1X" id="8tg-F4-nB5"/>
                         <outlet property="stopButton" destination="e6C-X6-u5r" id="HJp-pl-PLZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
         </scene>
     </scenes>
 </document>

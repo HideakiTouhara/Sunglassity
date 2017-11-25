@@ -9,19 +9,26 @@
 import UIKit
 import AVFoundation
 import AssetsLibrary
+import ARKit
 
 class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var sceneView: ARSCNView!
     
     let captureSession = AVCaptureSession()
     let videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
     let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio)
     let fileOutput = AVCaptureMovieFileOutput()
+    
+    let configuration = ARWorldTrackingConfiguration()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // ARKitの準備
+        self.sceneView.session.run(configuration)
         
         // Session, Deviceの準備
         let videoInput = try! AVCaptureDeviceInput(device: videoDevice!)
