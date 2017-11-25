@@ -29,17 +29,6 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         let audioInput = try! AVCaptureDeviceInput(device: audioDevice!)
         captureSession.addInput(audioInput)
         captureSession.addOutput(fileOutput)
-        
-        // Preview画面
-        let videoLayer = AVCaptureVideoPreviewLayer.init(session: captureSession)
-        videoLayer.frame = self.view.bounds
-        videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        self.view.layer.addSublayer(videoLayer)
-        self.view.bringSubview(toFront: recordButton)
-        self.view.bringSubview(toFront: stopButton)
-        
-        // セッション開始
-        captureSession.startRunning()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +42,9 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     @IBAction func tappedRecordButton(_ sender: UIButton) {
+        // セッション開始
+        captureSession.startRunning()
+        
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentDirectory = paths[0]
         let filePath = "\(documentDirectory)/temp.mp4"
