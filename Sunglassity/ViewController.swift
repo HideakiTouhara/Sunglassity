@@ -12,6 +12,9 @@ import AssetsLibrary
 
 class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    
     let captureSession = AVCaptureSession()
     let videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
     let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio)
@@ -32,6 +35,11 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         videoLayer.frame = self.view.bounds
         videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.view.layer.addSublayer(videoLayer)
+        self.view.bringSubview(toFront: recordButton)
+        self.view.bringSubview(toFront: stopButton)
+        
+        // セッション開始
+        captureSession.startRunning()
     }
 
     override func didReceiveMemoryWarning() {
