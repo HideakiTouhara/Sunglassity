@@ -39,6 +39,11 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        let assetLib = ALAssetsLibrary()
+        assetLib.writeVideoAtPath(toSavedPhotosAlbum: outputFileURL, completionBlock: nil)
+    }
+    
     @IBAction func tappedRecordButton(_ sender: UIButton) {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentDirectory = paths[0]
@@ -46,6 +51,11 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         let fileURL = URL(fileURLWithPath: filePath)
         fileOutput.startRecording(to: fileURL, recordingDelegate: self)
     }
+    
+    @IBAction func tappedStopButton(_ sender: UIButton) {
+        fileOutput.stopRecording()
+    }
+    
     
 
 
