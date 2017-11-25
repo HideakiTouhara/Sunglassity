@@ -18,26 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6C-X6-u5r">
-                                <rect key="frame" x="81" y="595" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6C-X6-u5r">
+                                <rect key="frame" x="80" y="582" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="2O7-kP-nAQ"/>
+                                    <constraint firstAttribute="width" constant="45" id="u0r-Ft-yAc"/>
+                                </constraints>
                                 <state key="normal" title="終了"/>
                                 <connections>
                                     <action selector="tappedStopButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M40-3x-8pN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWt-BP-PSr">
-                                <rect key="frame" x="248" y="595" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWt-BP-PSr">
+                                <rect key="frame" x="250" y="582" width="45" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="Ogs-K5-sKq"/>
+                                    <constraint firstAttribute="height" constant="45" id="ciA-Kh-EuU"/>
+                                </constraints>
                                 <state key="normal" title="開始"/>
                                 <connections>
                                     <action selector="tappedRecordButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n0N-la-6fx"/>
                                 </connections>
                             </button>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VvN-Na-Y1X">
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvN-Na-Y1X">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="A9G-wQ-sD2" appends="YES" id="KR5-ER-2ug"/>
@@ -45,6 +50,16 @@
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VvN-Na-Y1X" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="26E-OW-wPf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e6C-X6-u5r" secondAttribute="bottom" constant="40" id="DKJ-7o-1e0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BWt-BP-PSr" secondAttribute="bottom" constant="40" id="HZd-QH-cAX"/>
+                            <constraint firstItem="VvN-Na-Y1X" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HeY-oh-jmc"/>
+                            <constraint firstItem="e6C-X6-u5r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="dHF-pv-5Dw"/>
+                            <constraint firstItem="VvN-Na-Y1X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fky-W4-WTh"/>
+                            <constraint firstItem="VvN-Na-Y1X" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="iBh-tP-b2Q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BWt-BP-PSr" secondAttribute="trailing" constant="80" id="qv5-GD-AcB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
