@@ -10,19 +10,18 @@ import UIKit
 import AVFoundation
 import AssetsLibrary
 import ARKit
+import ARVideoKit
 
-class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+class ViewController: UIViewController/*, AVCaptureFileOutputRecordingDelegate*/ {
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var sceneView: ARSCNView!
-    
-    let captureSession = AVCaptureSession()
-    let videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
-    let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio)
-    let fileOutput = AVCaptureMovieFileOutput()
-    
+        
     let configuration = ARWorldTrackingConfiguration()
+    
+    // ARVideoKit
+    var recorder:RecordAR?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +29,16 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         // ARKitの準備
         self.sceneView.session.run(configuration)
         
-        // Session, Deviceの準備
-        let videoInput = try! AVCaptureDeviceInput(device: videoDevice!)
-        captureSession.addInput(videoInput)
-        let audioInput = try! AVCaptureDeviceInput(device: audioDevice!)
-        captureSession.addInput(audioInput)
-        captureSession.addOutput(fileOutput)
+        // ARVideoKit
+        recorder = RecordAR(ARSceneKit: sceneView)
+        recorder?.prepare(configuration)
         
         self.view.bringSubview(toFront: recordButton)
         self.view.bringSubview(toFront: stopButton)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        recorder?.rest()
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,24 +46,12 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-        let assetLib = ALAssetsLibrary()
-        assetLib.writeVideoAtPath(toSavedPhotosAlbum: outputFileURL, completionBlock: nil)
-    }
-    
     @IBAction func tappedRecordButton(_ sender: UIButton) {
-        // セッション開始
-        captureSession.startRunning()
-        
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentDirectory = paths[0]
-        let filePath = "\(documentDirectory)/temp.mp4"
-        let fileURL = URL(fileURLWithPath: filePath)
-        fileOutput.startRecording(to: fileURL, recordingDelegate: self)
+        recorder?.record()
     }
     
     @IBAction func tappedStopButton(_ sender: UIButton) {
-        fileOutput.stopRecording()
+        recorder?.stopAndExport()
     }
     
     @IBAction func draw(_ sender: UIPanGestureRecognizer) {
