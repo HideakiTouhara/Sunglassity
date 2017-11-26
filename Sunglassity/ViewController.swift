@@ -17,8 +17,9 @@ class ViewController: UIViewController/*, AVCaptureFileOutputRecordingDelegate*/
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var sceneView: ARSCNView!
-        
+    
     let configuration = ARWorldTrackingConfiguration()
+    var url: URL!
     
     // ARVideoKit
     var recorder:RecordAR?
@@ -51,7 +52,13 @@ class ViewController: UIViewController/*, AVCaptureFileOutputRecordingDelegate*/
     }
     
     @IBAction func tappedStopButton(_ sender: UIButton) {
-        recorder?.stopAndExport()
+        recorder?.stopAndExport({ (url, _, _) in
+            self.url = url
+            let text = "シェア"
+            let items = [text, url] as [Any]
+            let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            self.present(activityVc, animated: true, completion: nil)
+        })
     }
     
     @IBAction func draw(_ sender: UIPanGestureRecognizer) {
