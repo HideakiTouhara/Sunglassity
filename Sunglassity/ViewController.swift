@@ -36,6 +36,9 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         let audioInput = try! AVCaptureDeviceInput(device: audioDevice!)
         captureSession.addInput(audioInput)
         captureSession.addOutput(fileOutput)
+        
+        self.view.bringSubview(toFront: recordButton)
+        self.view.bringSubview(toFront: stopButton)
     }
 
     override func didReceiveMemoryWarning() {
