@@ -12,7 +12,7 @@ import AssetsLibrary
 import ARKit
 import ARVideoKit
 
-class ViewController: UIViewController/*, AVCaptureFileOutputRecordingDelegate*/ {
+class ViewController: UIViewController {
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -33,6 +33,7 @@ class ViewController: UIViewController/*, AVCaptureFileOutputRecordingDelegate*/
         // ARVideoKit
         recorder = RecordAR(ARSceneKit: sceneView)
         recorder?.prepare(configuration)
+        recorder?.deleteCacheWhenExported = false
         
         self.view.bringSubview(toFront: recordButton)
         self.view.bringSubview(toFront: stopButton)
