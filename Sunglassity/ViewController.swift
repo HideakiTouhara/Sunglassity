@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     // ARVideoKit
     var recorder:RecordAR?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         recorder?.prepare(configuration)
         recorder?.deleteCacheWhenExported = false
         
+        // ボタンを前面に
         self.view.bringSubview(toFront: recordButton)
         self.view.bringSubview(toFront: stopButton)
     }
@@ -47,6 +48,8 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - IBAction
     
     @IBAction func tappedRecordButton(_ sender: UIButton) {
         recorder?.record()
@@ -64,20 +67,11 @@ class ViewController: UIViewController {
     
     @IBAction func draw(_ sender: UIPanGestureRecognizer) {
         let point = sender.location(in: sceneView)
-        let results = sceneView.hitTest(point, types: .featurePoint)
-        if let hitPoint = results.first {
-            let length = sqrt(hitPoint.worldTransform.columns.3.x * hitPoint.worldTransform.columns.3.x + hitPoint.worldTransform.columns.3.y * hitPoint.worldTransform.columns.3.y + hitPoint.worldTransform.columns.3.z * hitPoint.worldTransform.columns.3.z)
-            let point = SCNVector3(hitPoint.worldTransform.columns.3.x / length, hitPoint.worldTransform.columns.3.y / length, hitPoint.worldTransform.columns.3.z / length)
-            let sphereNode = SCNNode(geometry: SCNSphere(radius: 0.02))
-            sphereNode.position = point
-            self.sceneView.scene.rootNode.addChildNode(sphereNode)
-            sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-        }
+        let pointVec3 = SCNVector3Make(Float(point.x), Float(point.y), 0.99)
+        let sphereNode = SCNNode(geometry: SCNSphere(radius: 0.005))
+        sphereNode.position = sceneView.unprojectPoint(pointVec3)
+        self.sceneView.scene.rootNode.addChildNode(sphereNode)
+        sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+        
     }
-    
-    
-    
-
-
 }
-
