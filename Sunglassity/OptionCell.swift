@@ -9,5 +9,5 @@
 import UIKit
 
 class OptionCell: UICollectionViewCell {
-    
+    @IBOutlet weak var name: UILabel!
 }
