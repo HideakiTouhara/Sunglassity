@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvN-Na-Y1X">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="A9G-wQ-sD2" appends="YES" id="KR5-ER-2ug"/>
+                                </connections>
+                            </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6C-X6-u5r">
                                 <rect key="frame" x="80" y="582" width="45" height="45"/>
                                 <constraints>
@@ -41,21 +48,87 @@
                                     <action selector="tappedRecordButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n0N-la-6fx"/>
                                 </connections>
                             </button>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvN-Na-Y1X">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <gestureRecognizers/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vc7-ta-0Dr">
+                                <rect key="frame" x="0.0" y="421" width="375" height="246"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ksK-bM-W3t">
+                                        <rect key="frame" x="0.0" y="68" width="375" height="178"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yxH-QT-9yg">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Axx-eg-dPY" customClass="OptionCell" customModule="Sunglassity" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBx-be-Ohg">
+                                                            <rect key="frame" x="4" y="0.0" width="42" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                                <connections>
+                                                    <outlet property="name" destination="LBx-be-Ohg" id="9tQ-wh-RsK"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="eAl-Hi-r7b"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="s77-sy-hkw"/>
+                                        </connections>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XW6-wH-Dvy">
+                                        <rect key="frame" x="315" y="15" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="決定"/>
+                                        <connections>
+                                            <action selector="determine:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bcn-VT-bvO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="246" id="2cY-eq-6y6"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bna-eG-ZQO">
+                                <rect key="frame" x="313" y="281" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="A9G-wQ-sD2" appends="YES" id="KR5-ER-2ug"/>
+                                    <action selector="setDrawing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cEg-eb-kL6"/>
                                 </connections>
-                            </arscnView>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymg-hY-mmi">
+                                <rect key="frame" x="164" y="589" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="check:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ij-sy-Uhh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VvN-Na-Y1X" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="26E-OW-wPf"/>
+                            <constraint firstItem="Vc7-ta-0Dr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="4zr-Tm-bEj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e6C-X6-u5r" secondAttribute="bottom" constant="40" id="DKJ-7o-1e0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BWt-BP-PSr" secondAttribute="bottom" constant="40" id="HZd-QH-cAX"/>
                             <constraint firstItem="VvN-Na-Y1X" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HeY-oh-jmc"/>
+                            <constraint firstItem="Vc7-ta-0Dr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qgf-7W-Pmb"/>
                             <constraint firstItem="e6C-X6-u5r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="dHF-pv-5Dw"/>
+                            <constraint firstItem="Vc7-ta-0Dr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fkT-ip-URh"/>
                             <constraint firstItem="VvN-Na-Y1X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fky-W4-WTh"/>
                             <constraint firstItem="VvN-Na-Y1X" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="iBh-tP-b2Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BWt-BP-PSr" secondAttribute="trailing" constant="80" id="qv5-GD-AcB"/>
@@ -63,6 +136,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="configView" destination="Vc7-ta-0Dr" id="bXa-dx-zhN"/>
+                        <outlet property="configViewHeight" destination="2cY-eq-6y6" id="3dh-Xq-XPO"/>
                         <outlet property="recordButton" destination="BWt-BP-PSr" id="P8T-eY-Quu"/>
                         <outlet property="sceneView" destination="VvN-Na-Y1X" id="8tg-F4-nB5"/>
                         <outlet property="stopButton" destination="e6C-X6-u5r" id="HJp-pl-PLZ"/>
