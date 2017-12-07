@@ -152,6 +152,7 @@ class ViewController: UIViewController {
         if mode == .photo {
             if photoMode == .trace {
                 photoMode = .put
+                mode = .normal
             }
         }
     }
@@ -226,11 +227,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        pictureBoard = SCNNode(geometry: SCNPlane(width: 0.3, height: 0.3))
+        pictureBoard = SCNNode(geometry: SCNPlane(width: 0.3, height: 0.5))
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         pictureBoard.geometry?.firstMaterial?.diffuse.contents = image
         self.sceneView.scene.rootNode.addChildNode(pictureBoard)
         mode = .photo
+        photoMode = .trace
         self.dismiss(animated: true, completion: nil)
     }
 }
