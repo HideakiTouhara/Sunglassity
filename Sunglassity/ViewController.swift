@@ -27,8 +27,9 @@ class ViewController: UIViewController {
     var recorder:RecordAR?
     
     enum Mode {
-        case draw
         case normal
+        case draw
+        case photo
     }
     
     var mode: Mode = .normal
@@ -75,9 +76,19 @@ class ViewController: UIViewController {
     
     var color: Color = .white
     
+    // pictureのモード
+    enum PhotoMode {
+        case trace
+        case put
+    }
+    
+    var photoMode: PhotoMode = .trace
+    
     // cell関連
     var previousThicknessNumber = IndexPath(row: 1, section: 0)
     var previousColorNumber = IndexPath(row: 1, section: 1)
+    
+    var pictureBoard: SCNNode!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +100,9 @@ class ViewController: UIViewController {
         recorder = RecordAR(ARSceneKit: sceneView)
         recorder?.prepare(configuration)
         recorder?.deleteCacheWhenExported = false
+        
+        // ARSCNViewDelegate
+        self.sceneView.delegate = self
         
         // UI設定
         self.configViewHeight.constant = 0
@@ -135,12 +149,42 @@ class ViewController: UIViewController {
     }
     
     @IBAction func check(_ sender: UIButton) {
+        if mode == .photo {
+            if photoMode == .trace {
+                photoMode = .put
+            }
+        }
     }
     
     @IBAction func determine(_ sender: UIButton) {
         configViewHeight.constant = 0
     }
     
+    @IBAction func selectPicture(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let pickerView = UIImagePickerController()
+            pickerView.sourceType = .photoLibrary
+            pickerView.delegate = self
+            self.present(pickerView, animated: true, completion: nil)
+        }
+    }
+    
+    
+}
+
+extension ViewController: ARSCNViewDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+        if mode != .photo { return }
+        if photoMode == .trace {
+            guard let pointOfView = sceneView.pointOfView else { return }
+            let transform = pointOfView.transform
+            let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
+            let location = SCNVector3(transform.m41, transform.m42, transform.m43)
+            let currentPositionOfCamera = orientation + location
+            pictureBoard.position = currentPositionOfCamera
+            pictureBoard.eulerAngles = pointOfView.eulerAngles
+        }
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -178,4 +222,19 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor = UIColor.orange
     }
+}
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        pictureBoard = SCNNode(geometry: SCNPlane(width: 0.3, height: 0.3))
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        pictureBoard.geometry?.firstMaterial?.diffuse.contents = image
+        self.sceneView.scene.rootNode.addChildNode(pictureBoard)
+        mode = .photo
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+func +(left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+    return SCNVector3Make(left.x + right.x, left.y + right.y, left.z + right.z)
 }

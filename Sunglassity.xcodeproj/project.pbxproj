@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0709B5561FD3D1E80054C504 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B5551FD3D1E80054C504 /* OptionCell.swift */; };
 		07F21CCA1FCA6381004ECD38 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F21CC91FCA6381004ECD38 /* ARVideoKit.framework */; };
 		07F21CCB1FCA6381004ECD38 /* ARVideoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07F21CC91FCA6381004ECD38 /* ARVideoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07F6FDA71FC1B5C700C39CDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F6FDA61FC1B5C700C39CDB /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0709B5551FD3D1E80054C504 /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		07F21CC91FCA6381004ECD38 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARVideoKit.framework; sourceTree = "<group>"; };
 		07F6FDA31FC1B5C700C39CDB /* Sunglassity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunglassity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F6FDA61FC1B5C700C39CDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				07F6FDA61FC1B5C700C39CDB /* AppDelegate.swift */,
 				07F6FDA81FC1B5C700C39CDB /* ViewController.swift */,
+				0709B5551FD3D1E80054C504 /* OptionCell.swift */,
 				07F6FDAA1FC1B5C700C39CDB /* Main.storyboard */,
 				07F6FDAD1FC1B5C700C39CDB /* Assets.xcassets */,
 				07F6FDAF1FC1B5C700C39CDB /* LaunchScreen.storyboard */,
@@ -170,6 +173,7 @@
 			files = (
 				07F6FDA91FC1B5C700C39CDB /* ViewController.swift in Sources */,
 				07F6FDA71FC1B5C700C39CDB /* AppDelegate.swift in Sources */,
+				0709B5561FD3D1E80054C504 /* OptionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
