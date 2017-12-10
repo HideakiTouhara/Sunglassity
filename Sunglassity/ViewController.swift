@@ -218,7 +218,7 @@ extension ViewController: ARSCNViewDelegate {
             guard let pointOfView = sceneView.pointOfView else { return }
             let transform = pointOfView.transform
             let orientationX = SCNVector3(-transform.m11, -transform.m12, -transform.m13)
-            let orientationZ = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
+            let orientationZ = SCNVector3(-transform.m31 * 1.2, -transform.m32 * 1.2, -transform.m33 * 1.2)
             let location = SCNVector3(transform.m41, transform.m42 - 1, transform.m43)
             let currentPositionOfCamera = orientationX + orientationZ + location
             textNode.position = SCNVector3(currentPositionOfCamera.x, currentPositionOfCamera.y, currentPositionOfCamera.z)

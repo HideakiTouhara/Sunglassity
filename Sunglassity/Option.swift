@@ -32,9 +32,9 @@ enum Size: String {
         case .big:
             return 0.5
         case .medium:
-            return 0.3
+            return 0.4
         case .small:
-            return 0.1
+            return 0.3
         }
     }
 }
