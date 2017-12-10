@@ -38,10 +38,8 @@ class ViewController: UIViewController {
         case draw
         case photo
         case photoTrace
-        case photoPut
         case text
         case textTrace
-        case textPut
     }
     
     var mode: Mode = .normal {
