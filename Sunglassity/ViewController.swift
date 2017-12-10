@@ -19,11 +19,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var configView: UIView!
     @IBOutlet weak var configViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var configViewBottom: NSLayoutConstraint!
     
     @IBOutlet weak var drawButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var textButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
+    
+    @IBOutlet weak var determineView: UIView!
+    @IBOutlet weak var determineButton: UIButton!
+    
     
     @IBOutlet weak var inputTextField: UITextField!
     
@@ -66,7 +71,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var thickness: Thickness = .medium
+    var size: Size = .medium
     var color: Color = .white
     
     // cell関連
@@ -91,9 +96,22 @@ class ViewController: UIViewController {
         self.sceneView.delegate = self
         self.inputTextField.delegate = self
         
-        
         // UI設定
         self.configViewHeight.constant = 0
+        
+        // キーボードが開くのを受け取る
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        if let userInfo = notification.userInfo {
+            if let keyboard = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                configViewBottom.constant = -keyboard.cgRectValue.size.height
+                configViewHeight.constant = 100
+                
+                determineView.isHidden = true
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -143,14 +161,16 @@ class ViewController: UIViewController {
         if mode != .draw { return }
         let point = sender.location(in: sceneView)
         let pointVec3 = SCNVector3Make(Float(point.x), Float(point.y), 0.99)
-        let sphereNode = SCNNode(geometry: SCNSphere(radius: thickness.thickness))
+        let sphereNode = SCNNode(geometry: SCNSphere(radius: size.thickness))
         sphereNode.position = sceneView.unprojectPoint(pointVec3)
         self.sceneView.scene.rootNode.addChildNode(sphereNode)
         sphereNode.geometry?.firstMaterial?.diffuse.contents = color.color
     }
     
     @IBAction func setDrawing(_ sender: UIButton) {
-        configViewHeight.constant = 246
+        configViewHeight.constant = 100
+        configViewBottom.constant = 0
+        determineView.isHidden = false
         mode = .draw
     }
     
@@ -164,6 +184,7 @@ class ViewController: UIViewController {
     
     @IBAction func determine(_ sender: UIButton) {
         configViewHeight.constant = 0
+        determineView.isHidden = true
     }
     
     @IBAction func selectPicture(_ sender: UIButton) {
@@ -219,7 +240,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! OptionCell
         if indexPath.section == 0 {
-            cell.name.text = Thickness.allValues[indexPath.row].rawValue
+            cell.name.text = Size.allValues[indexPath.row].rawValue
         } else if indexPath.section == 1 {
             cell.name.text = Color.allValues[indexPath.row].rawValue
         }
@@ -230,7 +251,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if indexPath.section == 0 {
             let cell = collectionView.cellForItem(at: previousThicknessNumber)
             cell?.backgroundColor = UIColor.white
-            thickness = Thickness.allValues[indexPath.row]
+            size = Size.allValues[indexPath.row]
             previousThicknessNumber.row = indexPath.row
         } else if indexPath.section == 1 {
             let cell = collectionView.cellForItem(at: previousColorNumber)
@@ -258,9 +279,14 @@ extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         inputTextField.resignFirstResponder()
         inputTextField.isHidden = true
+        configViewBottom.constant = 0
+        configViewHeight.constant = 0
+        determineButton.isHidden = false
+        
         let text = SCNText(string: inputTextField.text, extrusionDepth: 0.05)
-        text.font = UIFont(name: "HiraKakuProN-W6", size: 0.5)
+        text.font = UIFont(name: "HiraKakuProN-W6", size: size.fontSize)
         textNode = SCNNode(geometry: text)
+        textNode.geometry?.firstMaterial?.diffuse.contents = color.color
         self.sceneView.scene.rootNode.addChildNode(textNode)
         mode = .textTrace
         return true

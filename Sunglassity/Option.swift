@@ -9,21 +9,32 @@
 import Foundation
 import UIKit
 
-enum Thickness: String {
-    case thick
+enum Size: String {
+    case big
     case medium
-    case thin
+    case small
     
-    static let allValues: [Thickness] = [.thick, .medium, .thin]
+    static let allValues: [Size] = [.big, .medium, .small]
     
     var thickness: CGFloat {
         switch self {
-        case .thick:
+        case .big:
             return 0.005
         case .medium:
             return 0.003
-        case .thin:
+        case .small:
             return 0.001
+        }
+    }
+    
+    var fontSize: CGFloat {
+        switch self {
+        case .big:
+            return 0.5
+        case .medium:
+            return 0.3
+        case .small:
+            return 0.1
         }
     }
 }
