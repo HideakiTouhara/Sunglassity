@@ -126,6 +126,21 @@
                                     <action selector="selectPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bPx-Iw-Sot"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ep0-R9-lKq">
+                                <rect key="frame" x="313" y="402" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="inputText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eTV-Vf-ePm"/>
+                                </connections>
+                            </button>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SYK-Ba-QGa">
+                                <rect key="frame" x="16" y="187" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -146,6 +161,7 @@
                     <connections>
                         <outlet property="configView" destination="Vc7-ta-0Dr" id="bXa-dx-zhN"/>
                         <outlet property="configViewHeight" destination="2cY-eq-6y6" id="3dh-Xq-XPO"/>
+                        <outlet property="inputTextField" destination="SYK-Ba-QGa" id="auB-kQ-tsh"/>
                         <outlet property="recordButton" destination="BWt-BP-PSr" id="P8T-eY-Quu"/>
                         <outlet property="sceneView" destination="VvN-Na-Y1X" id="8tg-F4-nB5"/>
                         <outlet property="stopButton" destination="e6C-X6-u5r" id="HJp-pl-PLZ"/>

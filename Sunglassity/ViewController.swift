@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var configView: UIView!
     @IBOutlet weak var configViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var inputTextField: UITextField!
+    
     let configuration = ARWorldTrackingConfiguration()
     var url: URL!
     
@@ -30,9 +32,19 @@ class ViewController: UIViewController {
         case normal
         case draw
         case photo
+        case text
     }
     
-    var mode: Mode = .normal
+    var mode: Mode = .normal {
+        didSet {
+            switch mode {
+            case .text:
+                inputTextField.isHidden = false
+            default:
+                inputTextField.isHidden = true
+            }
+        }
+    }
     
     enum Thickness: String {
         case thick
@@ -84,11 +96,20 @@ class ViewController: UIViewController {
     
     var photoMode: PhotoMode = .trace
     
+    // textのモード
+    enum TextMode {
+        case trace
+        case put
+    }
+    
+    var textMode: TextMode = .put
+    
     // cell関連
     var previousThicknessNumber = IndexPath(row: 1, section: 0)
     var previousColorNumber = IndexPath(row: 1, section: 1)
     
     var pictureBoard: SCNNode!
+    var textNode: SCNNode!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,8 +122,10 @@ class ViewController: UIViewController {
         recorder?.prepare(configuration)
         recorder?.deleteCacheWhenExported = false
         
-        // ARSCNViewDelegate
+        // Delegate
         self.sceneView.delegate = self
+        self.inputTextField.delegate = self
+        
         
         // UI設定
         self.configViewHeight.constant = 0
@@ -154,6 +177,11 @@ class ViewController: UIViewController {
                 photoMode = .put
                 mode = .normal
             }
+        } else if mode == .text {
+            if textMode == .trace {
+                textMode = .put
+                mode = .normal
+            }
         }
     }
     
@@ -170,13 +198,18 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func inputText(_ sender: UIButton) {
+        mode = .text
+    }
+    
+    
     
 }
 
 extension ViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        if mode != .photo { return }
-        if photoMode == .trace {
+        if mode != .photo && mode != .text { return }
+        if mode == .photo && photoMode == .trace {
             guard let pointOfView = sceneView.pointOfView else { return }
             let transform = pointOfView.transform
             let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
@@ -184,6 +217,15 @@ extension ViewController: ARSCNViewDelegate {
             let currentPositionOfCamera = orientation + location
             pictureBoard.position = currentPositionOfCamera
             pictureBoard.eulerAngles = pointOfView.eulerAngles
+        } else if mode == .text &&  textMode == .trace {
+            guard let pointOfView = sceneView.pointOfView else { return }
+            let transform = pointOfView.transform
+            let orientationX = SCNVector3(-transform.m11, -transform.m12, -transform.m13)
+            let orientationZ = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
+            let location = SCNVector3(transform.m41, transform.m42 - 1, transform.m43)
+            let currentPositionOfCamera = orientationX + orientationZ + location
+            textNode.position = SCNVector3(currentPositionOfCamera.x, currentPositionOfCamera.y, currentPositionOfCamera.z)
+            textNode.eulerAngles = pointOfView.eulerAngles
         }
     }
 }
@@ -234,6 +276,19 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         mode = .photo
         photoMode = .trace
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        inputTextField.resignFirstResponder()
+        inputTextField.isHidden = true
+        let text = SCNText(string: inputTextField.text, extrusionDepth: 0.05)
+        text.font = UIFont(name: "HiraKakuProN-W6", size: 0.5)
+        textNode = SCNNode(geometry: text)
+        self.sceneView.scene.rootNode.addChildNode(textNode)
+        textMode = .trace
+        return true
     }
 }
 
