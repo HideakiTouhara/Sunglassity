@@ -97,7 +97,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bna-eG-ZQO">
                                 <rect key="frame" x="313" y="281" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="🖍"/>
                                 <connections>
                                     <action selector="setDrawing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cEg-eb-kL6"/>
                                 </connections>
@@ -105,7 +105,8 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymg-hY-mmi">
                                 <rect key="frame" x="164" y="589" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="✓"/>
                                 <connections>
                                     <action selector="check:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ij-sy-Uhh"/>
                                 </connections>
@@ -113,7 +114,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpW-wE-VBR">
                                 <rect key="frame" x="313" y="339" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="📷"/>
                                 <connections>
                                     <action selector="selectPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bPx-Iw-Sot"/>
                                 </connections>
@@ -121,7 +122,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ep0-R9-lKq">
                                 <rect key="frame" x="313" y="402" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="T">
+                                    <color key="titleColor" red="0.195825891" green="1" blue="0.89700141580000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="inputText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eTV-Vf-ePm"/>
                                 </connections>
