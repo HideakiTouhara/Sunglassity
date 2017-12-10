@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var drawButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var textButton: UIButton!
-    
+    @IBOutlet weak var checkButton: UIButton!
     
     @IBOutlet weak var inputTextField: UITextField!
     
@@ -45,8 +45,21 @@ class ViewController: UIViewController {
     var mode: Mode = .normal {
         didSet {
             switch mode {
+            case .normal:
+                makeButtonAppear()
+                checkButton.isHidden = true
+            case .photo:
+                makeButtonHidden()
             case .text:
+                makeButtonHidden()
                 inputTextField.isHidden = false
+            case .photoTrace:
+                makeButtonHidden()
+                inputTextField.isHidden = true
+                checkButton.isHidden = false
+            case .textTrace:
+                makeButtonHidden()
+                checkButton.isHidden = false
             default:
                 inputTextField.isHidden = true
             }
@@ -93,12 +106,18 @@ class ViewController: UIViewController {
     }
     
     func makeButtonHidden() {
+        recordButton.isHidden = true
+        stopButton.isHidden = true
+        
         drawButton.isHidden = true
         photoButton.isHidden = true
         textButton.isHidden = true
     }
     
     func makeButtonAppear() {
+        recordButton.isHidden = false
+        stopButton.isHidden = false
+        
         drawButton.isHidden = false
         photoButton.isHidden = false
         textButton.isHidden = false

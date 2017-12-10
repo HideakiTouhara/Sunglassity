@@ -110,7 +110,7 @@
                                     <action selector="setDrawing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cEg-eb-kL6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymg-hY-mmi">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymg-hY-mmi">
                                 <rect key="frame" x="164" y="589" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -159,6 +159,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="checkButton" destination="ymg-hY-mmi" id="k33-fx-2g2"/>
                         <outlet property="configView" destination="Vc7-ta-0Dr" id="bXa-dx-zhN"/>
                         <outlet property="configViewHeight" destination="2cY-eq-6y6" id="3dh-Xq-XPO"/>
                         <outlet property="drawButton" destination="bna-eG-ZQO" id="Ma7-Fu-tfU"/>

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0709B5561FD3D1E80054C504 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B5551FD3D1E80054C504 /* OptionCell.swift */; };
-		0733EFB81FDD35B500967CF3 /* DrawMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733EFB71FDD35B500967CF3 /* DrawMode.swift */; };
+		0733EFB81FDD35B500967CF3 /* DrawOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733EFB71FDD35B500967CF3 /* DrawOption.swift */; };
 		07D473F41FDC0468004A4824 /* TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D473F31FDC0468004A4824 /* TextView.xib */; };
 		07D473F81FDC08A1004A4824 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D473F71FDC08A1004A4824 /* TextViewController.swift */; };
 		07F21CCA1FCA6381004ECD38 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F21CC91FCA6381004ECD38 /* ARVideoKit.framework */; };
@@ -36,7 +36,7 @@
 
 /* Begin PBXFileReference section */
 		0709B5551FD3D1E80054C504 /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
-		0733EFB71FDD35B500967CF3 /* DrawMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMode.swift; sourceTree = "<group>"; };
+		0733EFB71FDD35B500967CF3 /* DrawOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawOption.swift; sourceTree = "<group>"; };
 		07D473F31FDC0468004A4824 /* TextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextView.xib; sourceTree = "<group>"; };
 		07D473F71FDC08A1004A4824 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		07F21CC91FCA6381004ECD38 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARVideoKit.framework; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				07F6FDA61FC1B5C700C39CDB /* AppDelegate.swift */,
-				0733EFB71FDD35B500967CF3 /* DrawMode.swift */,
+				0733EFB71FDD35B500967CF3 /* DrawOption.swift */,
 				07F6FDA81FC1B5C700C39CDB /* ViewController.swift */,
 				0709B5551FD3D1E80054C504 /* OptionCell.swift */,
 				07F6FDAA1FC1B5C700C39CDB /* Main.storyboard */,
@@ -183,7 +183,7 @@
 			files = (
 				07D473F81FDC08A1004A4824 /* TextViewController.swift in Sources */,
 				07F6FDA91FC1B5C700C39CDB /* ViewController.swift in Sources */,
-				0733EFB81FDD35B500967CF3 /* DrawMode.swift in Sources */,
+				0733EFB81FDD35B500967CF3 /* DrawOption.swift in Sources */,
 				07F6FDA71FC1B5C700C39CDB /* AppDelegate.swift in Sources */,
 				0709B5561FD3D1E80054C504 /* OptionCell.swift in Sources */,
 			);
