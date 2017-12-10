@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var configView: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var configViewHeight: NSLayoutConstraint!
     @IBOutlet weak var configViewBottom: NSLayoutConstraint!
     
@@ -53,6 +54,9 @@ class ViewController: UIViewController {
             case .normal:
                 makeButtonAppear()
                 checkButton.isHidden = true
+            case .draw:
+                recordButton.isHidden = true
+                stopButton.isHidden = true
             case .photo:
                 makeButtonHidden()
             case .text:
@@ -98,6 +102,9 @@ class ViewController: UIViewController {
         
         // UI設定
         self.configViewHeight.constant = 0
+        configView.backgroundColor = UIColor.clear
+        determineView.backgroundColor = UIColor(red: 85 / 255, green: 85 / 255, blue: 85 / 255, alpha: 0.6)
+        collectionView.backgroundColor = UIColor(red: 85 / 255, green: 85 / 255, blue: 85 / 255, alpha: 0.6)
         
         // キーボードが開くのを受け取る
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
@@ -250,12 +257,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let cell = collectionView.cellForItem(at: previousThicknessNumber)
-            cell?.backgroundColor = UIColor.white
+            cell?.backgroundColor = UIColor(red: 85 / 255, green: 85 / 255, blue: 85 / 255, alpha: 0.6)
             size = Size.allValues[indexPath.row]
             previousThicknessNumber.row = indexPath.row
         } else if indexPath.section == 1 {
             let cell = collectionView.cellForItem(at: previousColorNumber)
-            cell?.backgroundColor = UIColor.white
+            cell?.backgroundColor = UIColor(red: 85 / 255, green: 85 / 255, blue: 85 / 255, alpha: 0.6)
             color = Color.allValues[indexPath.row]
             previousColorNumber.row = indexPath.row
         }

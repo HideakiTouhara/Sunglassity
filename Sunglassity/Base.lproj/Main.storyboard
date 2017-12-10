@@ -51,10 +51,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vc7-ta-0Dr">
                                 <rect key="frame" x="0.0" y="517" width="375" height="150"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ksK-bM-W3t">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ksK-bM-W3t">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yxH-QT-9yg">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -89,7 +89,6 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="2cY-eq-6y6"/>
                                 </constraints>
@@ -137,7 +136,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZJ-ae-iq5" userLabel="determineView">
+                            <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZJ-ae-iq5" userLabel="determineView">
                                 <rect key="frame" x="0.0" y="460" width="375" height="57"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XW6-wH-Dvy">
@@ -152,7 +151,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="XW6-wH-Dvy" secondAttribute="trailing" constant="22" id="Au4-ox-pD9"/>
                                     <constraint firstAttribute="height" constant="57" id="NOf-Cs-i6O"/>
@@ -182,6 +181,7 @@
                     </view>
                     <connections>
                         <outlet property="checkButton" destination="ymg-hY-mmi" id="k33-fx-2g2"/>
+                        <outlet property="collectionView" destination="ksK-bM-W3t" id="NyK-rW-Gdy"/>
                         <outlet property="configView" destination="Vc7-ta-0Dr" id="bXa-dx-zhN"/>
                         <outlet property="configViewBottom" destination="Qgf-7W-Pmb" id="UgU-ig-Fqt"/>
                         <outlet property="configViewHeight" destination="2cY-eq-6y6" id="3dh-Xq-XPO"/>
