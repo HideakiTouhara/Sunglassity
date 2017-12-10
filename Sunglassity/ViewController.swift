@@ -20,6 +20,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var configView: UIView!
     @IBOutlet weak var configViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var drawButton: UIButton!
+    @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet weak var textButton: UIButton!
+    
+    
     @IBOutlet weak var inputTextField: UITextField!
     
     let configuration = ARWorldTrackingConfiguration()
@@ -32,7 +37,11 @@ class ViewController: UIViewController {
         case normal
         case draw
         case photo
+        case photoTrace
+        case photoPut
         case text
+        case textTrace
+        case textPut
     }
     
     var mode: Mode = .normal {
@@ -85,6 +94,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func makeButtonHidden() {
+        drawButton.isHidden = true
+        photoButton.isHidden = true
+        textButton.isHidden = true
+    }
+    
+    func makeButtonAppear() {
+        drawButton.isHidden = false
+        photoButton.isHidden = false
+        textButton.isHidden = false
+    }
+    
     // MARK: - IBAction
     
     @IBAction func tappedRecordButton(_ sender: UIButton) {
@@ -117,16 +138,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func check(_ sender: UIButton) {
-        if mode == .photo {
-            if photoMode == .trace {
-                photoMode = .put
-                mode = .normal
-            }
-        } else if mode == .text {
-            if textMode == .trace {
-                textMode = .put
-                mode = .normal
-            }
+        if mode == .photoTrace {
+            mode = .normal
+        } else if mode == .textTrace {
+            mode = .normal
         }
     }
     
@@ -153,8 +168,7 @@ class ViewController: UIViewController {
 
 extension ViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-        if mode != .photo && mode != .text { return }
-        if mode == .photo && photoMode == .trace {
+        if mode == .photoTrace {
             guard let pointOfView = sceneView.pointOfView else { return }
             let transform = pointOfView.transform
             let orientation = SCNVector3(-transform.m31, -transform.m32, -transform.m33)
@@ -162,7 +176,7 @@ extension ViewController: ARSCNViewDelegate {
             let currentPositionOfCamera = orientation + location
             pictureBoard.position = currentPositionOfCamera
             pictureBoard.eulerAngles = pointOfView.eulerAngles
-        } else if mode == .text &&  textMode == .trace {
+        } else if mode == .textTrace {
             guard let pointOfView = sceneView.pointOfView else { return }
             let transform = pointOfView.transform
             let orientationX = SCNVector3(-transform.m11, -transform.m12, -transform.m13)
@@ -218,8 +232,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         pictureBoard.geometry?.firstMaterial?.diffuse.contents = image
         self.sceneView.scene.rootNode.addChildNode(pictureBoard)
-        mode = .photo
-        photoMode = .trace
+        mode = .photoTrace
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -232,7 +245,7 @@ extension ViewController: UITextFieldDelegate {
         text.font = UIFont(name: "HiraKakuProN-W6", size: 0.5)
         textNode = SCNNode(geometry: text)
         self.sceneView.scene.rootNode.addChildNode(textNode)
-        textMode = .trace
+        mode = .textTrace
         return true
     }
 }

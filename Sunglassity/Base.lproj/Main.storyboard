@@ -161,10 +161,13 @@
                     <connections>
                         <outlet property="configView" destination="Vc7-ta-0Dr" id="bXa-dx-zhN"/>
                         <outlet property="configViewHeight" destination="2cY-eq-6y6" id="3dh-Xq-XPO"/>
+                        <outlet property="drawButton" destination="bna-eG-ZQO" id="Ma7-Fu-tfU"/>
                         <outlet property="inputTextField" destination="SYK-Ba-QGa" id="auB-kQ-tsh"/>
+                        <outlet property="photoButton" destination="dpW-wE-VBR" id="rsO-OY-wGD"/>
                         <outlet property="recordButton" destination="BWt-BP-PSr" id="P8T-eY-Quu"/>
                         <outlet property="sceneView" destination="VvN-Na-Y1X" id="8tg-F4-nB5"/>
                         <outlet property="stopButton" destination="e6C-X6-u5r" id="HJp-pl-PLZ"/>
+                        <outlet property="textButton" destination="ep0-R9-lKq" id="q6l-ar-PLj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
