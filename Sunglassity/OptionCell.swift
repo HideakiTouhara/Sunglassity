@@ -10,4 +10,5 @@ import UIKit
 
 class OptionCell: UICollectionViewCell {
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var checkLabel: UILabel!
 }

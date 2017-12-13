@@ -30,7 +30,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var determineView: UIView!
     @IBOutlet weak var determineButton: UIButton!
     
-    
     @IBOutlet weak var inputTextField: UITextField!
     
     let configuration = ARWorldTrackingConfiguration()
@@ -57,11 +56,13 @@ class ViewController: UIViewController {
             case .draw:
                 recordButton.isHidden = true
                 stopButton.isHidden = true
+                collectionView.reloadData()
             case .photo:
                 makeButtonHidden()
             case .text:
                 makeButtonHidden()
                 inputTextField.isHidden = false
+                collectionView.reloadData()
             case .photoTrace:
                 makeButtonHidden()
                 inputTextField.isHidden = true
@@ -69,21 +70,25 @@ class ViewController: UIViewController {
             case .textTrace:
                 makeButtonHidden()
                 checkButton.isHidden = false
-            default:
-                inputTextField.isHidden = true
             }
         }
     }
     
-    var size: Size = .medium
-    var color: Color = .white
+    var drawSize: Size = Size.defaultValue
+    var drawColor: Color = Color.defaultValue
+    var textSize: Size = Size.defaultValue
+    var textColor: Color = Color.defaultValue
     
     // cell関連
-    var previousThicknessNumber = IndexPath(row: 1, section: 0)
-    var previousColorNumber = IndexPath(row: 1, section: 1)
+    var previousDrawSizeNumber = IndexPath(row: Size.defaultValue.hashValue, section: 0)
+    var previousDrawColorNumber = IndexPath(row: Color.defaultValue.hashValue, section: 1)
+    var previousTextSizeNumber = IndexPath(row: Size.defaultValue.hashValue, section: 0)
+    var previousTextColorNumber = IndexPath(row: Color.defaultValue.hashValue, section: 1)
     
     var pictureBoard: SCNNode!
     var textNode: SCNNode!
+    
+    var textViewController: TextViewController?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,6 +153,17 @@ class ViewController: UIViewController {
         textButton.isHidden = false
     }
     
+    func resetCell() {
+        previousDrawSizeNumber = IndexPath(row: Size.defaultValue.hashValue, section: 0)
+        previousDrawColorNumber = IndexPath(row: Color.defaultValue.hashValue, section: 1)
+        previousTextSizeNumber = IndexPath(row: Size.defaultValue.hashValue, section: 0)
+        previousTextColorNumber = IndexPath(row: Color.defaultValue.hashValue, section: 1)
+        
+        drawSize = Size.defaultValue
+        drawColor = Color.defaultValue
+        textSize = Size.defaultValue
+        textColor = Color.defaultValue
+    }
     // MARK: - IBAction
     
     @IBAction func tappedRecordButton(_ sender: UIButton) {
@@ -168,10 +184,10 @@ class ViewController: UIViewController {
         if mode != .draw { return }
         let point = sender.location(in: sceneView)
         let pointVec3 = SCNVector3Make(Float(point.x), Float(point.y), 0.99)
-        let sphereNode = SCNNode(geometry: SCNSphere(radius: size.thickness))
+        let sphereNode = SCNNode(geometry: SCNSphere(radius: drawSize.thickness))
         sphereNode.position = sceneView.unprojectPoint(pointVec3)
         self.sceneView.scene.rootNode.addChildNode(sphereNode)
-        sphereNode.geometry?.firstMaterial?.diffuse.contents = color.color
+        sphereNode.geometry?.firstMaterial?.diffuse.contents = drawColor.color
     }
     
     @IBAction func setDrawing(_ sender: UIButton) {
@@ -205,6 +221,9 @@ class ViewController: UIViewController {
     
     @IBAction func inputText(_ sender: UIButton) {
         mode = .text
+//        let viewController = TextViewController()
+//        viewController.embed(in: self)
+//        self.textViewController = viewController
     }
     
     
@@ -248,32 +267,59 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! OptionCell
         if indexPath.section == 0 {
             cell.name.text = Size.allValues[indexPath.row].rawValue
+            if indexPath.row == Size.defaultValue.hashValue {
+                cell.checkLabel.isHidden = false
+            } else {
+                cell.checkLabel.isHidden = true
+            }
         } else if indexPath.section == 1 {
             cell.name.text = Color.allValues[indexPath.row].rawValue
+            if indexPath.row == Color.defaultValue.hashValue {
+                cell.checkLabel.isHidden = false
+            } else {
+                cell.checkLabel.isHidden = true
+            }
         }
+        resetCell()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let cell = collectionView.cellForItem(at: previousThicknessNumber)
-            cell?.backgroundColor = UIColor(red: 85 / 255, green: 85 / 255, blue: 85 / 255, alpha: 0.6)
-            size = Size.allValues[indexPath.row]
-            previousThicknessNumber.row = indexPath.row
+            if mode == .draw {
+                let cell = collectionView.cellForItem(at: previousDrawSizeNumber) as! OptionCell
+                cell.checkLabel.isHidden = true
+                drawSize = Size.allValues[indexPath.row]
+                previousDrawSizeNumber.row = indexPath.row
+
+            } else if mode == .text {
+                let cell = collectionView.cellForItem(at: previousTextSizeNumber) as! OptionCell
+                cell.checkLabel.isHidden = true
+                textSize = Size.allValues[indexPath.row]
+                previousTextSizeNumber.row = indexPath.row
+            }
         } else if indexPath.section == 1 {
-            let cell = collectionView.cellForItem(at: previousColorNumber)
-            cell?.backgroundColor = UIColor(red: 85 / 255, green: 85 / 255, blue: 85 / 255, alpha: 0.6)
-            color = Color.allValues[indexPath.row]
-            previousColorNumber.row = indexPath.row
+            if mode == .draw {
+                let cell = collectionView.cellForItem(at: previousDrawColorNumber) as! OptionCell
+                cell.checkLabel.isHidden = true
+                drawColor = Color.allValues[indexPath.row]
+                previousDrawColorNumber.row = indexPath.row
+            } else if mode == .text {
+                let cell = collectionView.cellForItem(at: previousTextColorNumber) as! OptionCell
+                cell.checkLabel.isHidden = true
+                textColor = Color.allValues[indexPath.row]
+                previousTextColorNumber.row = indexPath.row
+
+            }
         }
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = UIColor.orange
+        let cell = collectionView.cellForItem(at: indexPath) as! OptionCell
+        cell.checkLabel.isHidden = false
     }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        pictureBoard = SCNNode(geometry: SCNPlane(width: 0.3, height: 0.5))
+        pictureBoard = SCNNode(geometry: SCNPlane(width: 0.45, height: 0.6))
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         pictureBoard.geometry?.firstMaterial?.diffuse.contents = image
         self.sceneView.scene.rootNode.addChildNode(pictureBoard)
@@ -291,9 +337,9 @@ extension ViewController: UITextFieldDelegate {
         determineButton.isHidden = false
         
         let text = SCNText(string: inputTextField.text, extrusionDepth: 0.05)
-        text.font = UIFont(name: "HiraKakuProN-W6", size: size.fontSize)
+        text.font = UIFont(name: "HiraKakuProN-W6", size: textSize.fontSize)
         textNode = SCNNode(geometry: text)
-        textNode.geometry?.firstMaterial?.diffuse.contents = color.color
+        textNode.geometry?.firstMaterial?.diffuse.contents = textColor.color
         self.sceneView.scene.rootNode.addChildNode(textNode)
         mode = .textTrace
         return true

@@ -16,6 +16,10 @@ enum Size: String {
     
     static let allValues: [Size] = [.big, .medium, .small]
     
+    static var defaultValue: Size {
+        return self.medium
+    }
+    
     var thickness: CGFloat {
         switch self {
         case .big:
@@ -45,6 +49,10 @@ enum Color: String {
     case white
     
     static let allValues: [Color] = [.red, .blue, .white]
+    
+    static var defaultValue: Color {
+        return self.white
+    }
     
     var color: UIColor {
         switch self {
