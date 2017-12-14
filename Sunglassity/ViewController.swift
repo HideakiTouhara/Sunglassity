@@ -15,7 +15,6 @@ import ARVideoKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var configView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -45,6 +44,7 @@ class ViewController: UIViewController {
         case photoTrace
         case text
         case textTrace
+        case isRecord
     }
     
     var mode: Mode = .normal {
@@ -55,7 +55,6 @@ class ViewController: UIViewController {
                 checkButton.isHidden = true
             case .draw:
                 recordButton.isHidden = true
-                stopButton.isHidden = true
                 collectionView.reloadData()
             case .photo:
                 makeButtonHidden()
@@ -70,6 +69,10 @@ class ViewController: UIViewController {
             case .textTrace:
                 makeButtonHidden()
                 checkButton.isHidden = false
+            case .isRecord:
+                makeButtonHidden()
+                // recordButtonだけ表示状態に戻す
+                recordButton.isHidden = false
             }
         }
     }
@@ -89,7 +92,7 @@ class ViewController: UIViewController {
     var textNode: SCNNode!
     
     var textViewController: TextViewController?
-        
+            
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,7 +140,6 @@ class ViewController: UIViewController {
     
     func makeButtonHidden() {
         recordButton.isHidden = true
-        stopButton.isHidden = true
         
         drawButton.isHidden = true
         photoButton.isHidden = true
@@ -146,7 +148,6 @@ class ViewController: UIViewController {
     
     func makeButtonAppear() {
         recordButton.isHidden = false
-        stopButton.isHidden = false
         
         drawButton.isHidden = false
         photoButton.isHidden = false
@@ -167,17 +168,23 @@ class ViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func tappedRecordButton(_ sender: UIButton) {
-        recorder?.record()
-    }
-    
-    @IBAction func tappedStopButton(_ sender: UIButton) {
-        recorder?.stopAndExport({ (url, _, _) in
-            self.url = url
-            let text = "AR動画だよ！"
-            let items = [text, url] as [Any]
-            let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            self.present(activityVc, animated: true, completion: nil)
-        })
+        if mode == .isRecord {
+            recorder?.stopAndExport({ (url, _, _) in
+                self.url = url
+                let text = "AR動画だよ！"
+                let items = [text, url] as [Any]
+                let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                self.present(activityVc, animated: true, completion: nil)
+            })
+            mode = .normal
+            recordButton.setTitle("●", for: .normal)
+            recordButton.setTitleColor(UIColor.red, for: .normal)
+        } else {
+            recorder?.record()
+            mode = .isRecord
+            recordButton.setTitle("■", for: .normal)
+            recordButton.setTitleColor(UIColor.blue, for: .normal)
+        }
     }
     
     @IBAction func draw(_ sender: UIPanGestureRecognizer) {

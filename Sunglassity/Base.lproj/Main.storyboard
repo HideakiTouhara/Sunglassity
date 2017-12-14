@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,25 +25,17 @@
                                     <outletCollection property="gestureRecognizers" destination="A9G-wQ-sD2" appends="YES" id="KR5-ER-2ug"/>
                                 </connections>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6C-X6-u5r">
-                                <rect key="frame" x="80" y="582" width="45" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="2O7-kP-nAQ"/>
-                                    <constraint firstAttribute="width" constant="45" id="u0r-Ft-yAc"/>
-                                </constraints>
-                                <state key="normal" title="終了"/>
-                                <connections>
-                                    <action selector="tappedStopButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M40-3x-8pN"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWt-BP-PSr">
-                                <rect key="frame" x="250" y="582" width="45" height="45"/>
+                                <rect key="frame" x="165" y="582" width="45" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="Ogs-K5-sKq"/>
                                     <constraint firstAttribute="height" constant="45" id="ciA-Kh-EuU"/>
                                 </constraints>
-                                <state key="normal" title="開始"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="●">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="tappedRecordButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n0N-la-6fx"/>
                                 </connections>
@@ -174,16 +166,14 @@
                             <constraint firstItem="Vc7-ta-0Dr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="4zr-Tm-bEj"/>
                             <constraint firstItem="Vc7-ta-0Dr" firstAttribute="top" secondItem="IZJ-ae-iq5" secondAttribute="bottom" id="7q4-vs-5gA"/>
                             <constraint firstItem="IZJ-ae-iq5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8YW-sR-jTL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e6C-X6-u5r" secondAttribute="bottom" constant="40" id="DKJ-7o-1e0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BWt-BP-PSr" secondAttribute="bottom" constant="40" id="HZd-QH-cAX"/>
                             <constraint firstItem="VvN-Na-Y1X" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HeY-oh-jmc"/>
                             <constraint firstItem="IZJ-ae-iq5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="K3y-x6-IhK"/>
                             <constraint firstItem="Vc7-ta-0Dr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qgf-7W-Pmb"/>
-                            <constraint firstItem="e6C-X6-u5r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="dHF-pv-5Dw"/>
                             <constraint firstItem="Vc7-ta-0Dr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fkT-ip-URh"/>
                             <constraint firstItem="VvN-Na-Y1X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fky-W4-WTh"/>
+                            <constraint firstItem="BWt-BP-PSr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iBF-zA-XKp"/>
                             <constraint firstItem="VvN-Na-Y1X" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="iBh-tP-b2Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BWt-BP-PSr" secondAttribute="trailing" constant="80" id="qv5-GD-AcB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -200,7 +190,6 @@
                         <outlet property="photoButton" destination="dpW-wE-VBR" id="rsO-OY-wGD"/>
                         <outlet property="recordButton" destination="BWt-BP-PSr" id="P8T-eY-Quu"/>
                         <outlet property="sceneView" destination="VvN-Na-Y1X" id="8tg-F4-nB5"/>
-                        <outlet property="stopButton" destination="e6C-X6-u5r" id="HJp-pl-PLZ"/>
                         <outlet property="textButton" destination="ep0-R9-lKq" id="q6l-ar-PLj"/>
                     </connections>
                 </viewController>
