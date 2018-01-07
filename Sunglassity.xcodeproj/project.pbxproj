@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0709B5561FD3D1E80054C504 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709B5551FD3D1E80054C504 /* OptionCell.swift */; };
+		071AEA032002497A004E0B0D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 071AEA022002497A004E0B0D /* GoogleService-Info.plist */; };
 		0733EFB81FDD35B500967CF3 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733EFB71FDD35B500967CF3 /* Option.swift */; };
 		07D473F41FDC0468004A4824 /* TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D473F31FDC0468004A4824 /* TextView.xib */; };
 		07D473F81FDC08A1004A4824 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D473F71FDC08A1004A4824 /* TextViewController.swift */; };
@@ -18,6 +19,7 @@
 		07F6FDAC1FC1B5C700C39CDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F6FDAA1FC1B5C700C39CDB /* Main.storyboard */; };
 		07F6FDAE1FC1B5C700C39CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F6FDAD1FC1B5C700C39CDB /* Assets.xcassets */; };
 		07F6FDB11FC1B5C700C39CDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F6FDAF1FC1B5C700C39CDB /* LaunchScreen.storyboard */; };
+		37D574FABDC71DB4AF31AAD9 /* Pods_Sunglassity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A736970DF6D6EA9FF38291 /* Pods_Sunglassity.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		0709B5551FD3D1E80054C504 /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
+		071AEA022002497A004E0B0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0733EFB71FDD35B500967CF3 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		07D473F31FDC0468004A4824 /* TextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextView.xib; sourceTree = "<group>"; };
 		07D473F71FDC08A1004A4824 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		07F6FDB21FC1B5C700C39CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07F6FDB91FC1B92200C39CDB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		07F6FDBA1FC1B92F00C39CDB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		524268FE3535F8A1A0F2A0F0 /* Pods-Sunglassity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sunglassity.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sunglassity/Pods-Sunglassity.release.xcconfig"; sourceTree = "<group>"; };
+		53A736970DF6D6EA9FF38291 /* Pods_Sunglassity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sunglassity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A8D1925EA29CB9F24F0CF33 /* Pods-Sunglassity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sunglassity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sunglassity/Pods-Sunglassity.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07F21CCA1FCA6381004ECD38 /* ARVideoKit.framework in Frameworks */,
+				37D574FABDC71DB4AF31AAD9 /* Pods_Sunglassity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +77,7 @@
 				07F6FDA51FC1B5C700C39CDB /* Sunglassity */,
 				07F6FDA41FC1B5C700C39CDB /* Products */,
 				07F6FDB81FC1B92100C39CDB /* Frameworks */,
+				0C1C1A7DD5BCEC5D591C2A2A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +102,7 @@
 				07F6FDB21FC1B5C700C39CDB /* Info.plist */,
 				07D473F31FDC0468004A4824 /* TextView.xib */,
 				07D473F71FDC08A1004A4824 /* TextViewController.swift */,
+				071AEA022002497A004E0B0D /* GoogleService-Info.plist */,
 			);
 			path = Sunglassity;
 			sourceTree = "<group>";
@@ -103,8 +112,18 @@
 			children = (
 				07F6FDBA1FC1B92F00C39CDB /* AssetsLibrary.framework */,
 				07F6FDB91FC1B92200C39CDB /* AVFoundation.framework */,
+				53A736970DF6D6EA9FF38291 /* Pods_Sunglassity.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C1C1A7DD5BCEC5D591C2A2A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A8D1925EA29CB9F24F0CF33 /* Pods-Sunglassity.debug.xcconfig */,
+				524268FE3535F8A1A0F2A0F0 /* Pods-Sunglassity.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,10 +133,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 07F6FDB51FC1B5C700C39CDB /* Build configuration list for PBXNativeTarget "Sunglassity" */;
 			buildPhases = (
+				7E40F5F0766CB26BCF1E2B0D /* [CP] Check Pods Manifest.lock */,
 				07F6FD9F1FC1B5C700C39CDB /* Sources */,
 				07F6FDA01FC1B5C700C39CDB /* Frameworks */,
 				07F6FDA11FC1B5C700C39CDB /* Resources */,
 				07F21CCC1FCA6382004ECD38 /* Embed Frameworks */,
+				B39C0501DB64564B354DA86D /* [CP] Embed Pods Frameworks */,
+				0F041003DCD89C696AA80201 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,12 +191,73 @@
 			files = (
 				07F6FDB11FC1B5C700C39CDB /* LaunchScreen.storyboard in Resources */,
 				07D473F41FDC0468004A4824 /* TextView.xib in Resources */,
+				071AEA032002497A004E0B0D /* GoogleService-Info.plist in Resources */,
 				07F6FDAE1FC1B5C700C39CDB /* Assets.xcassets in Resources */,
 				07F6FDAC1FC1B5C700C39CDB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F041003DCD89C696AA80201 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sunglassity/Pods-Sunglassity-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E40F5F0766CB26BCF1E2B0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sunglassity-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B39C0501DB64564B354DA86D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Sunglassity/Pods-Sunglassity-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sunglassity/Pods-Sunglassity-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		07F6FD9F1FC1B5C700C39CDB /* Sources */ = {
@@ -320,6 +403,7 @@
 		};
 		07F6FDB61FC1B5C700C39CDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A8D1925EA29CB9F24F0CF33 /* Pods-Sunglassity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -339,6 +423,7 @@
 		};
 		07F6FDB71FC1B5C700C39CDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 524268FE3535F8A1A0F2A0F0 /* Pods-Sunglassity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
