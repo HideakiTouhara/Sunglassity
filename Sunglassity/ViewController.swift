@@ -11,6 +11,7 @@ import AVFoundation
 import AssetsLibrary
 import ARKit
 import ARVideoKit
+import Firebase
 
 class ViewController: UIViewController {
     
@@ -33,6 +34,7 @@ class ViewController: UIViewController {
     
     let configuration = ARWorldTrackingConfiguration()
     var url: URL!
+    var items = [NSDictionary]()
     
     // ARVideoKit
     var recorder:RecordAR?
@@ -116,6 +118,23 @@ class ViewController: UIViewController {
         
         // キーボードが開くのを受け取る
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+        
+        let firebase = Database.database().reference(fromURL: "https://sunglassity.firebaseio.com/").child("Posts")
+        firebase.queryLimited(toLast: 10).observe(.value) { (snapshot, error) in
+            var tempItems = [NSDictionary]()
+            for item in(snapshot.children) {
+                let child = item as! DataSnapshot
+                let dict = child.value
+                tempItems.append(dict as! NSDictionary)
+            }
+            self.items = tempItems
+            let dict = self.items[0]
+            let playerViewController = TimelineViewController()
+            let decodeData = (base64encoded:dict["video"])
+            let decodedDate = NSData(base64Encoded: decodeData as! String, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
+            playerViewController.movieData = decodedDate as! Data
+            self.present(playerViewController, animated: true, completion: nil)
+        }
     }
     
     @objc func keyboardWillShow(notification: Notification) {
