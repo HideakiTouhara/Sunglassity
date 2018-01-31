@@ -10,6 +10,23 @@ import UIKit
 import AVFoundation
 import AVKit
 
+// MARK:- レイヤーをAVPlayerLayerにする為のラッパークラス.
+
+class AVPlayerView: UIView {
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    override class var layerClass: AnyClass {
+        return AVPlayerLayer.self
+    }
+}
+
 class TimelineViewController: AVPlayerViewController, AVAssetResourceLoaderDelegate {
     
     var movieData: Data? = nil
@@ -24,6 +41,17 @@ class TimelineViewController: AVPlayerViewController, AVAssetResourceLoaderDeleg
         
         let playerItem = AVPlayerItem.init(asset: asset)
         self.player = AVPlayer(playerItem: playerItem)
+        
+        // Viewを生成.
+        let videoPlayerView = AVPlayerView(frame:  self.view.bounds)
+        
+        // UIViewのレイヤーをAVPlayerLayerにする.
+        let layer = videoPlayerView.layer as! AVPlayerLayer
+        layer.videoGravity = AVLayerVideoGravity.resizeAspect
+        layer.player = self.player
+        
+        // レイヤーを追加する.
+        self.view.layer.addSublayer(layer)
     }
 
     override func didReceiveMemoryWarning() {
