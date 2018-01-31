@@ -119,6 +119,7 @@ class ViewController: UIViewController {
         // キーボードが開くのを受け取る
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
         
+        // Firebaseから取ってくる
         let firebase = Database.database().reference(fromURL: "https://sunglassity.firebaseio.com/").child("Posts")
         firebase.queryLimited(toLast: 10).observe(.value) { (snapshot, error) in
             var tempItems = [NSDictionary]()
