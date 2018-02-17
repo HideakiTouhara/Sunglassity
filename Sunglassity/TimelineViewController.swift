@@ -23,6 +23,8 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.addSubview(refreshControl)
         refreshControl.endRefreshing()
         loadData()
+        tableView.estimatedRowHeight = 450
+        tableView.rowHeight = 450
     }
 
     override func didReceiveMemoryWarning() {
