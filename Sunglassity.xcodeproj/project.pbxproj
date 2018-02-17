@@ -98,8 +98,8 @@
 			children = (
 				07F6FDA61FC1B5C700C39CDB /* AppDelegate.swift */,
 				0733EFB71FDD35B500967CF3 /* Option.swift */,
-				07F6FDA81FC1B5C700C39CDB /* ViewController.swift */,
 				0709B5551FD3D1E80054C504 /* OptionCell.swift */,
+				07F6FDA81FC1B5C700C39CDB /* ViewController.swift */,
 				071AEA062004EFC8004E0B0D /* TimelineViewController.swift */,
 				076FA74420384854007870B7 /* VideoPlayerViewController.swift */,
 				07F6FDAA1FC1B5C700C39CDB /* Main.storyboard */,

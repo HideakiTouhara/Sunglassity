@@ -10,49 +10,13 @@ import UIKit
 import AVFoundation
 import AVKit
 
-class TimelineViewController: AVPlayerViewController, AVAssetResourceLoaderDelegate {
+class TimelineViewController: UIViewController {
     
-    var movieData: Data? = nil
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let asset = AVURLAsset.init(url: NSURL.init(string: "") as! URL)
-        
-        let resourceLoader = asset.resourceLoader
-        resourceLoader.setDelegate(self, queue: DispatchQueue.main)
-        
-        let playerItem = AVPlayerItem.init(asset: asset)
-        self.player = AVPlayer(playerItem: playerItem)
-        
-        // Viewを生成.
-        let videoPlayerView = AVPlayerView(frame:  self.view.bounds)
-        
-        // UIViewのレイヤーをAVPlayerLayerにする.
-        let layer = videoPlayerView.layer as! AVPlayerLayer
-        layer.videoGravity = AVLayerVideoGravity.resizeAspect
-        layer.player = self.player
-        
-        // レイヤーを追加する.
-        self.view.layer.addSublayer(layer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
-        loadingRequest.contentInformationRequest?.contentType = "public.mpeg-4";
-        loadingRequest.contentInformationRequest?.contentLength = Int64((self.movieData?.count)!)
-        loadingRequest.contentInformationRequest?.isByteRangeAccessSupported = true
-        
-        let requestedData = self.movieData?.subdata(in: Int(loadingRequest.dataRequest!.requestedOffset) ..< Int(loadingRequest.dataRequest!.requestedLength))
-        
-        loadingRequest.dataRequest?.respond(with: requestedData!)
-        loadingRequest.finishLoading()
-        
-        return true
-    }
-    
 }
