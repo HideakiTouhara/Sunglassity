@@ -1,8 +1,8 @@
 //
-//  TimelineViewController.swift
+//  VideoPlayerViewController.swift
 //  Sunglassity
 //
-//  Created by HideakiTouhara on 2018/01/09.
+//  Created by HideakiTouhara on 2018/02/17.
 //  Copyright © 2018年 HideakiTouhara. All rights reserved.
 //
 
@@ -10,10 +10,28 @@ import UIKit
 import AVFoundation
 import AVKit
 
-class TimelineViewController: AVPlayerViewController, AVAssetResourceLoaderDelegate {
-    
-    var movieData: Data? = nil
+// MARK:- レイヤーをAVPlayerLayerにする為のラッパークラス.
 
+class AVPlayerView: UIView {
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    override class var layerClass: AnyClass {
+        return AVPlayerLayer.self
+    }
+}
+
+
+class VideoPlayerViewController: AVPlayerViewController, AVAssetResourceLoaderDelegate {
+
+    var movieData: Data? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +54,7 @@ class TimelineViewController: AVPlayerViewController, AVAssetResourceLoaderDeleg
         // レイヤーを追加する.
         self.view.layer.addSublayer(layer)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,5 +72,4 @@ class TimelineViewController: AVPlayerViewController, AVAssetResourceLoaderDeleg
         
         return true
     }
-    
 }

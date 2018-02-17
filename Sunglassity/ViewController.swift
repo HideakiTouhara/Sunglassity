@@ -131,7 +131,7 @@ class ViewController: UIViewController {
             }
             self.items = tempItems
             let dict = self.items[0]
-            let playerViewController = TimelineViewController()
+            let playerViewController = VideoPlayerViewController()
             let decodeData = (base64encoded:dict["video"])
             let decodedDate = NSData(base64Encoded: decodeData as! String, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
             playerViewController.movieData = decodedDate as! Data

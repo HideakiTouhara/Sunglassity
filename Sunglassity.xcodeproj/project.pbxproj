@@ -11,6 +11,7 @@
 		071AEA032002497A004E0B0D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 071AEA022002497A004E0B0D /* GoogleService-Info.plist */; };
 		071AEA072004EFC8004E0B0D /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071AEA062004EFC8004E0B0D /* TimelineViewController.swift */; };
 		0733EFB81FDD35B500967CF3 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733EFB71FDD35B500967CF3 /* Option.swift */; };
+		076FA74520384854007870B7 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076FA74420384854007870B7 /* VideoPlayerViewController.swift */; };
 		07D473F41FDC0468004A4824 /* TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D473F31FDC0468004A4824 /* TextView.xib */; };
 		07D473F81FDC08A1004A4824 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D473F71FDC08A1004A4824 /* TextViewController.swift */; };
 		07F21CCA1FCA6381004ECD38 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F21CC91FCA6381004ECD38 /* ARVideoKit.framework */; };
@@ -42,6 +43,7 @@
 		071AEA022002497A004E0B0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		071AEA062004EFC8004E0B0D /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		0733EFB71FDD35B500967CF3 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		076FA74420384854007870B7 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		07D473F31FDC0468004A4824 /* TextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextView.xib; sourceTree = "<group>"; };
 		07D473F71FDC08A1004A4824 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		07F21CC91FCA6381004ECD38 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARVideoKit.framework; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				07F6FDA81FC1B5C700C39CDB /* ViewController.swift */,
 				0709B5551FD3D1E80054C504 /* OptionCell.swift */,
 				071AEA062004EFC8004E0B0D /* TimelineViewController.swift */,
+				076FA74420384854007870B7 /* VideoPlayerViewController.swift */,
 				07F6FDAA1FC1B5C700C39CDB /* Main.storyboard */,
 				07F6FDAD1FC1B5C700C39CDB /* Assets.xcassets */,
 				07F6FDAF1FC1B5C700C39CDB /* LaunchScreen.storyboard */,
@@ -270,6 +273,7 @@
 				07D473F81FDC08A1004A4824 /* TextViewController.swift in Sources */,
 				07F6FDA91FC1B5C700C39CDB /* ViewController.swift in Sources */,
 				0733EFB81FDD35B500967CF3 /* Option.swift in Sources */,
+				076FA74520384854007870B7 /* VideoPlayerViewController.swift in Sources */,
 				07F6FDA71FC1B5C700C39CDB /* AppDelegate.swift in Sources */,
 				0709B5561FD3D1E80054C504 /* OptionCell.swift in Sources */,
 				071AEA072004EFC8004E0B0D /* TimelineViewController.swift in Sources */,
