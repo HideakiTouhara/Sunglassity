@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ouv-ws-JJC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,6 +12,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="gTC-Ch-kEz">
+            <objects>
+                <navigationController id="VBj-Gg-j1f" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="home" id="glB-hP-1Yu"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UIB-OF-zFx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0dW-e2-wCG" kind="relationship" relationship="rootViewController" id="tMZ-n7-rli"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UcG-CP-ibc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33" y="-672"/>
+        </scene>
         <!--Timeline View Controller-->
         <scene sceneID="0OD-VZ-pQe">
             <objects>
@@ -29,7 +46,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="449"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Emf-a6-AuN" id="EP0-FZ-1Fe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="449"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="448.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yb-I5-qSS">
@@ -73,10 +90,30 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="UXh-Ef-t8K"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="home" id="v3b-s8-b3r"/>
+                    <navigationItem key="navigationItem" id="wyQ-2a-fVP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1QG-aG-J47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="-649.02548725637189"/>
+            <point key="canvasLocation" x="1036" y="-672"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="EHN-89-lOV">
+            <objects>
+                <tabBarController id="ouv-ws-JJC" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U7r-69-wWX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="VBj-Gg-j1f" kind="relationship" relationship="viewControllers" id="EJu-OV-hCM"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Fde-6z-oZD"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cfY-Up-RhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1017" y="-267"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -87,14 +124,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvN-Na-Y1X">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="A9G-wQ-sD2" appends="YES" id="KR5-ER-2ug"/>
                                 </connections>
                             </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWt-BP-PSr">
-                                <rect key="frame" x="165" y="582" width="45" height="45"/>
+                                <rect key="frame" x="165" y="533" width="45" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="Ogs-K5-sKq"/>
@@ -109,7 +146,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vc7-ta-0Dr">
-                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="468" width="375" height="150"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ksK-bM-W3t">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
@@ -205,7 +242,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZJ-ae-iq5" userLabel="determineView">
-                                <rect key="frame" x="0.0" y="460" width="375" height="57"/>
+                                <rect key="frame" x="0.0" y="411" width="375" height="57"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XW6-wH-Dvy">
                                         <rect key="frame" x="307" y="13" width="46" height="30"/>
@@ -244,6 +281,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="camera" id="v22-c1-WuJ"/>
                     <connections>
                         <outlet property="checkButton" destination="ymg-hY-mmi" id="k33-fx-2g2"/>
                         <outlet property="collectionView" destination="ksK-bM-W3t" id="NyK-rW-Gdy"/>
@@ -285,4 +323,8 @@
             <point key="canvasLocation" x="1037" y="37"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="32" height="32"/>
+        <image name="home" width="32" height="32"/>
+    </resources>
 </document>
