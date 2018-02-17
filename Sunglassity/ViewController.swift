@@ -34,6 +34,7 @@ class ViewController: UIViewController {
     
     let configuration = ARWorldTrackingConfiguration()
     var url: URL!
+    var thumbnail: UIImage!
     var items = [NSDictionary]()
     
     // ARVideoKit
@@ -188,9 +189,12 @@ class ViewController: UIViewController {
     
     func post() {
         let databaseRef = Database.database().reference(fromURL: "https://sunglassity.firebaseio.com/")
+        
+        let photoData = UIImageJPEGRepresentation(thumbnail, 0.1)! as NSData
+        let photoBase64String = photoData.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters) as String
         let videoData = try? NSData(contentsOf: url, options: .mappedIfSafe)
         let videoBase64String = videoData?.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters) as! String
-        let user: NSDictionary = ["username": "a", "video": videoBase64String]
+        let user: NSDictionary = ["username": "a", "video": videoBase64String, "thumbnail": photoBase64String]
         databaseRef.child("Posts").childByAutoId().setValue(user)
     }
     
@@ -199,16 +203,14 @@ class ViewController: UIViewController {
         if mode == .isRecord {
             recorder?.stopAndExport({ (url, _, _) in
                 self.url = url
-//                let text = "AR動画だよ！"
-//                let items = [text, url] as [Any]
-//                let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-//                self.present(activityVc, animated: true, completion: nil)
+                self.post()
             })
             mode = .normal
             recordButton.setTitle("●", for: .normal)
             recordButton.setTitleColor(UIColor.red, for: .normal)
         } else {
             recorder?.record()
+            thumbnail = recorder?.photo()
             mode = .isRecord
             recordButton.setTitle("■", for: .normal)
             recordButton.setTitleColor(UIColor.blue, for: .normal)
