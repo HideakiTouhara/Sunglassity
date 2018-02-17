@@ -186,6 +186,14 @@ class ViewController: UIViewController {
         textColor = Color.defaultValue
     }
     
+    func post() {
+        let databaseRef = Database.database().reference(fromURL: "https://sunglassity.firebaseio.com/")
+        let videoData = try? NSData(contentsOf: url, options: .mappedIfSafe)
+        let videoBase64String = videoData?.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters) as! String
+        let user: NSDictionary = ["username": "a", "video": videoBase64String]
+        databaseRef.child("Posts").childByAutoId().setValue(user)
+    }
+    
     // MARK: - IBAction
     @IBAction func tappedRecordButton(_ sender: UIButton) {
         if mode == .isRecord {
@@ -195,11 +203,6 @@ class ViewController: UIViewController {
 //                let items = [text, url] as [Any]
 //                let activityVc = UIActivityViewController(activityItems: items, applicationActivities: nil)
 //                self.present(activityVc, animated: true, completion: nil)
-                let databaseRef = Database.database().reference(fromURL: "https://sunglassity.firebaseio.com/")
-                let videoData = try? NSData(contentsOf: url, options: .mappedIfSafe)
-                let base64String = videoData?.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters) as! String
-                let user: NSDictionary = ["username": "a", "video": base64String]
-                databaseRef.child("Posts").childByAutoId().setValue(user)
             })
             mode = .normal
             recordButton.setTitle("●", for: .normal)
