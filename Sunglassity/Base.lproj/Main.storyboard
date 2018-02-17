@@ -42,21 +42,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="449" id="Emf-a6-AuN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimelineCell" rowHeight="449" id="Emf-a6-AuN" customClass="TimelineTableViewCell" customModule="Sunglassity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="449"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Emf-a6-AuN" id="EP0-FZ-1Fe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="448.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yb-I5-qSS">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="8yb-I5-qSS">
                                                     <rect key="frame" x="15" y="11" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="SMU-Zh-udM"/>
                                                         <constraint firstAttribute="width" constant="50" id="rkQ-31-8qe"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fTg-rw-Phg">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="fTg-rw-Phg">
                                                     <rect key="frame" x="15" y="69" width="345" height="345"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="fTg-rw-Phg" secondAttribute="height" multiplier="1:1" id="cXL-xQ-6QK"/>
@@ -83,8 +83,17 @@
                                                 <constraint firstItem="8yb-I5-qSS" firstAttribute="top" secondItem="EP0-FZ-1Fe" secondAttribute="topMargin" id="vxs-oR-7nn"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="profileImage" destination="8yb-I5-qSS" id="3Uo-VA-HFo"/>
+                                            <outlet property="thumbnail" destination="fTg-rw-Phg" id="nMw-wk-67I"/>
+                                            <outlet property="username" destination="fjA-ju-7lS" id="pmJ-ew-cCj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="0dW-e2-wCG" id="w2x-2u-X48"/>
+                                    <outlet property="delegate" destination="0dW-e2-wCG" id="PeW-ke-OYm"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,6 +101,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="home" id="v3b-s8-b3r"/>
                     <navigationItem key="navigationItem" id="wyQ-2a-fVP"/>
+                    <connections>
+                        <outlet property="tableView" destination="UZn-yv-eUw" id="OI0-z9-4cX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1QG-aG-J47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
