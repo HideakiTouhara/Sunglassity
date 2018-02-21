@@ -14,6 +14,7 @@
 		076FA74520384854007870B7 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076FA74420384854007870B7 /* VideoPlayerViewController.swift */; };
 		076FA747203855AB007870B7 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076FA746203855AB007870B7 /* TimelineTableViewCell.swift */; };
 		07BEC8C8203D9F7D008715B6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEC8C7203D9F7C008715B6 /* SignUpViewController.swift */; };
+		07BEC8CA203D9FFA008715B6 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEC8C9203D9FFA008715B6 /* IntroductionViewController.swift */; };
 		07D473F41FDC0468004A4824 /* TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D473F31FDC0468004A4824 /* TextView.xib */; };
 		07D473F81FDC08A1004A4824 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D473F71FDC08A1004A4824 /* TextViewController.swift */; };
 		07F21CCA1FCA6381004ECD38 /* ARVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F21CC91FCA6381004ECD38 /* ARVideoKit.framework */; };
@@ -48,6 +49,7 @@
 		076FA74420384854007870B7 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		076FA746203855AB007870B7 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		07BEC8C7203D9F7C008715B6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		07BEC8C9203D9FFA008715B6 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		07D473F31FDC0468004A4824 /* TextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextView.xib; sourceTree = "<group>"; };
 		07D473F71FDC08A1004A4824 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		07F21CC91FCA6381004ECD38 /* ARVideoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARVideoKit.framework; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				07F6FDA61FC1B5C700C39CDB /* AppDelegate.swift */,
+				07BEC8C9203D9FFA008715B6 /* IntroductionViewController.swift */,
 				07BEC8C7203D9F7C008715B6 /* SignUpViewController.swift */,
 				0733EFB71FDD35B500967CF3 /* Option.swift */,
 				0709B5551FD3D1E80054C504 /* OptionCell.swift */,
@@ -282,6 +285,7 @@
 				0733EFB81FDD35B500967CF3 /* Option.swift in Sources */,
 				076FA74520384854007870B7 /* VideoPlayerViewController.swift in Sources */,
 				07F6FDA71FC1B5C700C39CDB /* AppDelegate.swift in Sources */,
+				07BEC8CA203D9FFA008715B6 /* IntroductionViewController.swift in Sources */,
 				07BEC8C8203D9F7D008715B6 /* SignUpViewController.swift in Sources */,
 				0709B5561FD3D1E80054C504 /* OptionCell.swift in Sources */,
 				071AEA072004EFC8004E0B0D /* TimelineViewController.swift in Sources */,

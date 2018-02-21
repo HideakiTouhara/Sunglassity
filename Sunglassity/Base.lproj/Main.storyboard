@@ -330,10 +330,10 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Introduction View Controller-->
         <scene sceneID="Yv7-DI-nQs">
             <objects>
-                <viewController id="cDE-Y2-qc3" customClass="SignUpViewController" customModule="Sunglassity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cDE-Y2-qc3" customClass="IntroductionViewController" customModule="Sunglassity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xPR-N5-654">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
