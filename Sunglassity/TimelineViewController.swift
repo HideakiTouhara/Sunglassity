@@ -79,4 +79,8 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         cell.thumbnail.image = decodedThumbNail
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showVideo(indexPath: indexPath)
+    }
 }
